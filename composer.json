@@ -19,12 +19,10 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "illuminate/validation": "^5.0|^6.0|^7.0|^8.0"
-    },
-    "require-dev": {
-        "orchestra/testbench": "~3.4",
-        "phpunit/phpunit": "~5.7"
+        "php": ">=8.0",
+        "illuminate/validation": "*",
+        "orchestra/testbench": "^9.1",
+        "phpunit/phpunit": "^11.1"
     },
     "autoload": {
         "psr-4": {
