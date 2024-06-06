@@ -16,21 +16,16 @@ class BadWord
      * @param  object $validator
      * @return bool
      */
-    public function validate($attribute, $value, $parameters, $validator): bool
+    public function validate($attribute, $value, $parameters, $validator)
     {
         if (!is_string($value)) {
             return true;
         }
 
-        // Get the list of bad words from the config
-        $words = config('bad-word.badwords', []);
+        $words = count($parameters) === 0 ?
+            config('bad-word') :
+            Arr::only(config('bad-word'), $parameters);
 
-        // If parameters are specified, filter the words accordingly
-        if (count($parameters) > 0) {
-            $words = Arr::only($words, $parameters);
-        }
-
-        // Flatten the array and check if the value contains any bad words
         return !Str::contains(strtolower($value), Arr::flatten($words));
     }
 }
